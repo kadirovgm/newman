@@ -1,6 +1,7 @@
 # API test automation using <span style="color:yellow">newman</span>
 
-    Newman is a CLI Collection Runner for Postman. It is built with extensibility in mind so that you can easily integrate it with your continuous integration servers and build systems.
+    Newman is a CLI Collection Runner for Postman. It is built with extensibility in mind so that you can 
+    easily integrate it with your continuous integration servers and build systems.
 
 #### In this README file you can find instructions for executing newman. 
 
