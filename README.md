@@ -21,3 +21,7 @@ For executing test cases in AHS project manually using Postman follow this link 
 
 ### <span style="color:yellow">For executing tests</span>
     $ newman run QA_collection.json -e AHS2.env.json
+
+# For more information
+### [newman official documentation](https://www.npmjs.com/package/newman)
+### [Running Postman collections with newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
