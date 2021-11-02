@@ -22,7 +22,10 @@ For executing test cases in AHS project manually using Postman follow this link 
 
 ### <span style="color:yellow">For executing tests</span>
     $ newman run QA_collection.json -e AHS2.env.json
-    
+
+### Execution results:
+![Results](https://github.com/kadirovgm/newman/blob/master/execution/result.png)
+
 # How to integrate to CI?
 #### [How to Build a CI/CD Pipeline that Executes API Tests](https://dev.to/leading-edje/hello-newman-how-to-build-a-ci-cd-pipeline-that-executes-api-tests-2h5l)
 
