@@ -2881,7 +2881,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"date\": \"2021-10-18T13:15:55.413Z\",\r\n  \"title\": \"{{title_position_interview}}\",\r\n  \"decision\": \"waiting\",\r\n  \"interviewee\": \"{{ID_PERSON}}\",\r\n  \"interviewers\": [\r\n    \"Test-interviewer-1\",\r\n    \"Test-interviewer-2\"\r\n  ],\r\n  \"position_interview_type\": \"client_interview\",\r\n  \"position\": \"{{ID_POSITION}}\",\r\n  \"summary\": \"test-summary\",\r\n  \"rejection_reason\": \"test-rejection-reason\",\r\n  \"outcome_comment\": \"test-comment\"\r\n}",
+									"raw": "{\r\n  \"date\": \"2021-10-18T13:15:55.413Z\",\r\n  \"title\": \"{{title_position_interview}}\",\r\n  \"decision\": \"waiting\",\r\n  \"feedback_status\": \"yes\",\r\n  \"interviewee\": \"{{ID_PERSON}}\",\r\n  \"interviewers\": [\r\n    \"Test-interviewer-1\",\r\n    \"Test-interviewer-2\"\r\n  ],\r\n  \"position_interview_type\": \"client_interview\",\r\n  \"position\": \"{{ID_POSITION}}\",\r\n  \"summary\": \"test-summary\",\r\n  \"rejection_reason\": \"test-rejection-reason\",\r\n  \"outcome_comment\": \"test-comment\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3043,7 +3043,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"date\": \"2021-10-18T13:15:55.413Z\",\r\n  \"title\": \"{{title_position_interview}}\",\r\n  \"decision\": \"waiting\",\r\n  \"interviewee\": \"{{ID_PERSON}}\",\r\n  \"interviewers\": [\r\n    \"Test-interviewer-1\",\r\n    \"Test-interviewer-2\"\r\n  ],\r\n  \"position_interview_type\": \"client_interview\",\r\n  \"position\": \"{{ID_POSITION}}\",\r\n  \"summary\": \"test-summary\",\r\n  \"rejection_reason\": \"test-rejection-reason\",\r\n  \"outcome_comment\": \"test-comment\"\r\n}",
+									"raw": "{\r\n  \"date\": \"2021-10-18T13:15:55.413Z\",\r\n  \"title\": \"{{title_position_interview}}\",\r\n  \"decision\": \"waiting\",\r\n  \"feedback_status\": \"yes\",\r\n  \"interviewee\": \"{{ID_PERSON}}\",\r\n  \"interviewers\": [\r\n    \"Test-interviewer-1\",\r\n    \"Test-interviewer-2\"\r\n  ],\r\n  \"position_interview_type\": \"client_interview\",\r\n  \"position\": \"{{ID_POSITION}}\",\r\n  \"summary\": \"test-summary\",\r\n  \"rejection_reason\": \"test-rejection-reason\",\r\n  \"outcome_comment\": \"test-comment\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3134,6 +3134,18 @@
 							"path": [
 								"cities",
 								""
+							],
+							"query": [
+								{
+									"key": "country__title_ru",
+									"value": "Россия",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -5669,7 +5681,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}\r\n",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5713,9 +5725,9 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        pm.expect(jsonData.city[0].id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
 											"        //pm.expect(jsonData.residences[0]).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        pm.expect(jsonData.assigned_hr[0].id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
 											"        });\r",
 											""
 										],
@@ -5727,13 +5739,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/persons/{{ID_PERSON}}/",
+									"raw": "{{host}}/persons/{{id_person}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"persons",
-										"{{ID_PERSON}}",
+										"{{id_person}}",
 										""
 									]
 								}
@@ -5778,9 +5790,9 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        pm.expect(jsonData.city).to.eql(pm.globals.get(\"ID_CITY\"));\r",
 											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        pm.expect(jsonData.assigned_hr).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
 											"        });\r",
 											""
 										],
@@ -5793,7 +5805,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}\r\n",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5853,11 +5865,10 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        pm.expect(jsonData.city).to.eql(pm.globals.get(\"ID_CITY\"));\r",
 											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });\r",
-											""
+											"        pm.expect(jsonData.assigned_hr).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });"
 										],
 										"type": "text/javascript"
 									}
@@ -5868,7 +5879,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}\r\n",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10483,7 +10494,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"transitionId\": \"PASS_SIMPLE_STEP\"\r\n}",
+									"raw": "{\r\n    \"transitionId\": \"PASS_SIMPLE_STEP\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10624,13 +10635,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10669,13 +10679,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10734,13 +10743,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10799,13 +10807,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10837,13 +10844,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10942,13 +10948,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10988,13 +10993,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11062,13 +11066,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11136,13 +11139,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11174,13 +11176,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11212,13 +11213,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11277,13 +11277,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11323,13 +11322,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11392,13 +11390,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11461,13 +11458,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11508,13 +11504,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11546,13 +11541,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11609,13 +11603,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11654,13 +11647,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11719,13 +11711,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11784,13 +11775,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11831,13 +11821,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11869,13 +11858,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										""
 									]
@@ -12270,13 +12258,12 @@
 							"response": []
 						},
 						{
-							"name": "OUT /position-seats-occupations/ {id}/",
+							"name": "OUT /candidates/ {id}/",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"exec": [
-											"\r",
 											"pm.test(\"Status code is 204\", function () {\r",
 											"    pm.response.to.have.status(204);\r",
 											"});"
@@ -12289,13 +12276,14 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/position-seat-occupations/{{id_pso}}/",
+									"raw": "{{host}}/candidates//{{id_candidates}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"position-seat-occupations",
-										"{{id_pso}}",
+										"candidates",
+										"",
+										"{{id_candidates}}",
 										""
 									]
 								}
