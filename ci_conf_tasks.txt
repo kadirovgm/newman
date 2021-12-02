@@ -1,0 +1,5 @@
+Newman CI configuration
+
+1. Docker: turn virtualization on BIOS
+2. newman/docker image: https://hub.docker.com/r/postman/newman/
+3. tutorial: https://www.youtube.com/watch?v=H0WiDqhDIOs 
