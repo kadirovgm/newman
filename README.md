@@ -23,6 +23,7 @@ For executing test cases in AHS project manually using Postman follow this link 
     $ cd newman/execution/
 
 ### <span style="color:yellow">For executing tests</span>
+#### Choose actual collection and environment file:
     $ newman run QA_AHS_collection.json -e AHS_env_loc.json
 
 ### Execution results:
