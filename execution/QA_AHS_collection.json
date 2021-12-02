@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "645271b1-c212-4799-aa5f-af262df64fba",
+		"_postman_id": "6d74a7bd-b3b1-4a93-9a52-c666e8ab823e",
 		"name": "QA_automation",
 		"description": "# Introduction\nAHS project's API automation collection\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -25,7 +25,9 @@
 									"    var jsonData = pm.response.json();\r",
 									"    //console.log('This is jsonData', jsonData.id)\r",
 									"    pm.environment.set(\"JWT_ACCESS\", jsonData.access);\r",
-									"});"
+									"});\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1221,7 +1223,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"date\": \"2021-10-13T21:01:58.610Z\",\n  \"title\": \"{{base_int_test}}\",\n  \"decision\": \"waiting\",\n  \"summary\": \"string\",\n  \"feedback_status\": \"waiting\",\n  \"interviewee\": \"{{ID_PERSON}}\",\n  \"position\": \"{{ID_POSITION}}\"\n}\n",
+									"raw": "{\n  \"date\": \"2021-10-13T21:01:58.610Z\",\n  \"title\": \"{{base_int_test}}\",\n  \"decision\": \"waiting\",\n  \"summary\": \"string\",\n  \"comment\": \"interview comment\",\n  \"feedback_status\": \"waiting\",\n  \"interviewee\": \"{{ID_PERSON}}\",\n  \"position\": \"{{ID_POSITION}}\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4365,90 +4367,6 @@
 			]
 		},
 		{
-			"name": "hr-importer_auto",
-			"item": [
-				{
-					"name": "/hr-importer/",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/hr-importer/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"hr-importer",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "hr-importer",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Successful POST request\", function () {\r",
-									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "generated_json",
-									"type": "file",
-									"src": "NX5sQDJ5J/persons.json"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{host}}/hr-importer/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"hr-importer",
-								""
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Roles_auto",
 			"item": [
 				{
@@ -5022,7 +4940,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/projects/",
+							"raw": "{{host}}/projects/?page_filter=history",
 							"host": [
 								"{{host}}"
 							],
@@ -5032,13 +4950,12 @@
 							],
 							"query": [
 								{
-									"key": "status",
-									"value": "finished",
-									"disabled": true
+									"key": "page_filter",
+									"value": "history"
 								},
 								{
-									"key": "page_filter",
-									"value": "positions_history",
+									"key": "status",
+									"value": "finished",
 									"disabled": true
 								}
 							]
@@ -5181,7 +5098,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"{{title_project}}\",\n  \"client\": \"{{ID_CLIENT}}\",\n  \"status\": \"waiting\",\n  \"rejection_reason\": \"not_found_candidates\",\n  \"finish_reason\": \"test-finish-reason\",\n  \"outcome_comment\": \"test-comment\"\n}",
+							"raw": "{\n  \"title\": \"{{title_project}}\",\n  \"client\": \"{{ID_CLIENT}}\",\n  \"status\": \"finished\",\n  \"rejection_reason\": \"not_found_candidates\",\n  \"finish_reason\": \"test-finish-reason\",\n  \"outcome_comment\": \"test-comment\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5240,7 +5157,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"{{title_project}}\",\n  \"client\": \"{{ID_CLIENT}}\",\n  \"status\": \"waiting\",\n  \"rejection_reason\": \"not_found_candidates\",\n  \"finish_reason\": \"test-finish-reason\",\n  \"outcome_comment\": \"test-comment\"\n}",
+							"raw": "{\n  \"title\": \"{{title_project}}\",\n  \"client\": \"{{ID_CLIENT}}\",\n  \"status\": \"rejected\",\n  \"rejection_reason\": \"not_found_candidates\",\n  \"finish_reason\": \"test-finish-reason\",\n  \"outcome_comment\": \"test-comment\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5681,7 +5598,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}\r\n",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"primary_skills\": [\r\n    {\r\n      \"skill\": \"{{ID_SKILLS}}\",\r\n      \"grade\": \"senior\",\r\n      \"is_confirmed\": true\r\n    }\r\n  ],\r\n  \"other_skills\": [\r\n    \"{{ID_SKILLS}}\"\r\n  ],\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"contacts\": [\r\n    {\r\n      \"contact_type\": \"phone\",\r\n      \"value\": \"string\"\r\n    }\r\n  ],\r\n  \"akvelon_cv\": \"http://192.168.52.137/api/v2.0/\",\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5725,9 +5642,9 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city[0].id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
 											"        //pm.expect(jsonData.residences[0]).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr[0].id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
 											"        });\r",
 											""
 										],
@@ -5790,9 +5707,9 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city).to.eql(pm.globals.get(\"ID_CITY\"));\r",
-											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        //pm.expect(jsonData.residences[0]).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
+											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
 											"        });\r",
 											""
 										],
@@ -5805,7 +5722,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"primary_skills\": [\r\n    {\r\n      \"skill\": \"{{ID_SKILLS}}\",\r\n      \"grade\": \"senior\",\r\n      \"is_confirmed\": true\r\n    }\r\n  ],\r\n  \"other_skills\": [\r\n    \"{{ID_SKILLS}}\"\r\n  ],\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"contacts\": [\r\n    {\r\n      \"contact_type\": \"phone\",\r\n      \"value\": \"string\"\r\n    }\r\n  ],\r\n  \"akvelon_cv\": \"http://192.168.52.137/api/v2.0/\",\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5865,10 +5782,11 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city).to.eql(pm.globals.get(\"ID_CITY\"));\r",
-											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });"
+											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        //pm.expect(jsonData.residences[0]).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
+											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });\r",
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -5879,7 +5797,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"primary_skills\": [\r\n    {\r\n      \"skill\": \"{{ID_SKILLS}}\",\r\n      \"grade\": \"senior\",\r\n      \"is_confirmed\": true\r\n    }\r\n  ],\r\n  \"other_skills\": [\r\n    \"{{ID_SKILLS}}\"\r\n  ],\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"contacts\": [\r\n    {\r\n      \"contact_type\": \"phone\",\r\n      \"value\": \"string\"\r\n    }\r\n  ],\r\n  \"akvelon_cv\": \"http://192.168.52.137/api/v2.0/\",\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6228,13 +6146,11 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/api/v2.0/persons/me/",
+									"raw": "{{host}}/persons/me/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"api",
-										"v2.0",
 										"persons",
 										"me",
 										""
@@ -6277,6 +6193,66 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "{id}/in-progress/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/{{ID_PERSON}}/in-progress/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{ID_PERSON}}",
+										"in-progress",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{id}/staffed/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/{{ID_PERSON}}/staffed/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{ID_PERSON}}",
+										"staffed",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{id}/history/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/{{ID_PERSON}}/staffed/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{ID_PERSON}}",
+										"staffed",
+										""
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -6284,7 +6260,7 @@
 					"name": "persons_other_cvs_auto",
 					"item": [
 						{
-							"name": "/persons-cvs/",
+							"name": "/persons-other-cvs/",
 							"event": [
 								{
 									"listen": "test",
@@ -6322,7 +6298,7 @@
 							"response": []
 						},
 						{
-							"name": "/persons-cvs/",
+							"name": "/persons-other-cvs/",
 							"event": [
 								{
 									"listen": "test",
@@ -6363,7 +6339,7 @@
 										{
 											"key": "file",
 											"type": "file",
-											"src": "/C:/Users/Akvelon/Downloads/dismiss logic.txt"
+											"src": "/C:/Users/Рушат/Desktop/QA_automation.postman_collection.json"
 										}
 									]
 								},
@@ -6381,7 +6357,7 @@
 							"response": []
 						},
 						{
-							"name": "/persons-cvs/ {id}/",
+							"name": "/persons-other-cvs/ {id}/",
 							"event": [
 								{
 									"listen": "test",
@@ -6421,7 +6397,7 @@
 							"response": []
 						},
 						{
-							"name": "/persons-cvs/ {id}/",
+							"name": "/persons-other-cvs/ {id}/",
 							"event": [
 								{
 									"listen": "test",
@@ -6458,6 +6434,11 @@
 											"key": "person",
 											"value": "{{ID_PERSON}}",
 											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Рушат/Desktop/QA_automation.postman_collection.json"
 										}
 									]
 								},
@@ -6476,7 +6457,7 @@
 							"response": []
 						},
 						{
-							"name": "/persons-cvs/ {id}/",
+							"name": "/persons-other-cvs/ {id}/",
 							"event": [
 								{
 									"listen": "test",
@@ -6517,7 +6498,7 @@
 										{
 											"key": "file",
 											"type": "file",
-											"src": "/C:/Users/Рушат/Desktop/1_vdh5SWbgqYu4QNgtovBt2A.png",
+											"src": [],
 											"disabled": true
 										}
 									]
@@ -6537,7 +6518,7 @@
 							"response": []
 						},
 						{
-							"name": "/persons-cvs/ {id}/",
+							"name": "/persons-other-cvs/ {id}/",
 							"event": [
 								{
 									"listen": "test",
@@ -6596,12 +6577,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/persons-skills/",
+									"raw": "{{host}}/person-skills/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-skills",
+										"person-skills",
 										""
 									]
 								}
@@ -6644,12 +6625,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/persons-skills/",
+									"raw": "{{host}}/person-skills/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-skills",
+										"person-skills",
 										""
 									]
 								}
@@ -6684,12 +6665,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/persons-skills/{{id_person_skills}}/",
+									"raw": "{{host}}/person-skills/{{id_person_skills}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-skills",
+										"person-skills",
 										"{{id_person_skills}}",
 										""
 									]
@@ -6734,12 +6715,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/persons-skills/{{id_person_skills}}/",
+									"raw": "{{host}}/person-skills/{{id_person_skills}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-skills",
+										"person-skills",
 										"{{id_person_skills}}",
 										""
 									]
@@ -6784,12 +6765,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/persons-skills/{{id_person_skills}}/",
+									"raw": "{{host}}/person-skills/{{id_person_skills}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-skills",
+										"person-skills",
 										"{{id_person_skills}}",
 										""
 									]
@@ -6816,12 +6797,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/persons-skills/{{id_person_skills}}/",
+									"raw": "{{host}}/person-skills/{{id_person_skills}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-skills",
+										"person-skills",
 										"{{id_person_skills}}",
 										""
 									]
@@ -6853,12 +6834,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/persons-work-histories/",
+									"raw": "{{host}}/person-work-histories/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-work-histories",
+										"person-work-histories",
 										""
 									]
 								}
@@ -6901,12 +6882,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/persons-work-histories/",
+									"raw": "{{host}}/person-work-histories/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-work-histories",
+										"person-work-histories",
 										""
 									]
 								}
@@ -6939,12 +6920,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/persons-work-histories/{{id_person_work_hostory}}/",
+									"raw": "{{host}}/person-work-histories/{{id_person_work_hostory}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-work-histories",
+										"person-work-histories",
 										"{{id_person_work_hostory}}",
 										""
 									]
@@ -6987,12 +6968,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/persons-work-histories/{{id_person_work_hostory}}/",
+									"raw": "{{host}}/person-work-histories/{{id_person_work_hostory}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-work-histories",
+										"person-work-histories",
 										"{{id_person_work_hostory}}",
 										""
 									]
@@ -7035,12 +7016,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/persons-work-histories/{{id_person_work_hostory}}/",
+									"raw": "{{host}}/person-work-histories/{{id_person_work_hostory}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-work-histories",
+										"person-work-histories",
 										"{{id_person_work_hostory}}",
 										""
 									]
@@ -7067,12 +7048,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/persons-work-histories/{{id_person_work_hostory}}/",
+									"raw": "{{host}}/person-work-histories/{{id_person_work_hostory}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-work-histories",
+										"person-work-histories",
 										"{{id_person_work_hostory}}",
 										""
 									]
@@ -7083,22 +7064,20 @@
 					]
 				},
 				{
-					"name": "persons_positions_auto",
+					"name": "person-contact",
 					"item": [
 						{
-							"name": "{id}/in-progress/",
+							"name": "/person-contacts/",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/persons-positions/{{ID_PERSON}}/in-progress/",
+									"raw": "{{host}}/person-contacts/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-positions",
-										"{{ID_PERSON}}",
-										"in-progress",
+										"person-contacts",
 										""
 									]
 								}
@@ -7106,19 +7085,42 @@
 							"response": []
 						},
 						{
-							"name": "{id}/staffed/",
+							"name": "/person-contacts/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Set var 'id' \r",
+											"pm.test(\"Set variable id\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    //console.log('This is jsonData', jsonData.id)\r",
+											"    pm.environment.set(\"id_person_contacts\", jsonData.id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"contact_type\": \"phone\",\n  \"value\": \"+79999999999\",\n  \"person\": \"{{ID_PERSON}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{host}}/persons-positions/{{ID_PERSON}}/staffed/",
+									"raw": "{{host}}/person-contacts/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-positions",
-										"{{ID_PERSON}}",
-										"staffed",
+										"person-contacts",
 										""
 									]
 								}
@@ -7126,19 +7128,170 @@
 							"response": []
 						},
 						{
-							"name": "{id}/history/",
+							"name": "/person-contacts/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"method": "GET",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{host}}/persons-positions/{{ID_PERSON}}/staffed/",
+									"raw": "{{host}}/person-contacts/{{id_person_contacts}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"persons-positions",
-										"{{ID_PERSON}}",
-										"staffed",
+										"person-contacts",
+										"{{id_person_contacts}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/person-contacts/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"contact_type\": \"phone\",\r\n  \"value\": \"+79999999999\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-contacts/{{id_person_contacts}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-contacts",
+										"{{id_person_contacts}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/person-contacts/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"contact_type\": \"phone\",\r\n  \"value\": \"+79999999999\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-contacts/{{id_person_contacts}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-contacts",
+										"{{id_person_contacts}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/person-contacts/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"contact_type\": \"phone\",\r\n  \"value\": \"+79999999999\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-contacts/{{id_person_contacts}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-contacts",
+										"{{id_person_contacts}}",
 										""
 									]
 								}
@@ -7212,7 +7365,7 @@
 										},
 										{
 											"key": "ordering",
-											"value": "created_at",
+											"value": "-deadline_closest",
 											"disabled": true
 										},
 										{
@@ -7281,7 +7434,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"project\": \"{{ID_PROJECT}}\",\n  \"title\": \"{{title_position}}\",\n  \"status\": \"open\",\n  \"position_type\": \"project\",\n  \"priority\": \"low\",\n  \"is_confirmed\": false,\n  \"comment\": \"test-comment\",\n  \"role\": \"{{ID_ROLE}}\",\n  \"job_description\": \"test-description\",\n  \"rejection_reason\": \"test-rejection-reason\",\n  \"outcome_comment\": \"test-comment\",\n  \"position_hrs\": [\n    \"{{ID_PERSON}}\"\n  ]\n}",
+									"raw": "{\n  \"project\": \"{{ID_PROJECT}}\",\n  \"title\": \"{{title_position}}\",\n  \"status\": \"open\",\n  \"position_type\": \"project\",\n  \"priority\": \"low\",\n  \"is_confirmed\": true,\n  \"comment\": \"test-comment\",\n  \"role\": \"{{ID_ROLE}}\",\n  \"job_description\": \"test-description\",\n  \"rejection_reason\": \"test-rejection-reason\",\n  \"english_level\": \"advanced\",\n  \"outcome_comment\": \"test-comment\",\n  \"position_hrs\": [\n    \"{{ID_PERSON}}\"\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7547,6 +7700,63 @@
 										"{{ID_POSITION}}",
 										"recommended-external",
 										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "na",
+											"disabled": true
+										},
+										{
+											"key": "roles",
+											"value": "732dd198-b3a5-4005-a795-5c86331081ab",
+											"disabled": true
+										},
+										{
+											"key": "grade",
+											"value": "senior",
+											"disabled": true
+										},
+										{
+											"key": "residences",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "english_level",
+											"value": "beginner",
+											"disabled": true
+										},
+										{
+											"key": "office",
+											"value": "kazan",
+											"disabled": true
+										},
+										{
+											"key": "city",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "person_type",
+											"value": "base_external",
+											"disabled": true
+										},
+										{
+											"key": "assigned_hr",
+											"value": "3161778c-68ea-4edd-b6ba-e4c2d4f3ca93",
+											"disabled": true
+										},
+										{
+											"key": "person_page",
+											"value": "external",
+											"disabled": true
+										},
+										{
+											"key": "position",
+											"value": "",
+											"disabled": true
+										}
 									]
 								}
 							},
@@ -7652,7 +7862,7 @@
 							"response": []
 						},
 						{
-							"name": "/positions/ {id}/ history",
+							"name": "/positions/ {id}/ history/rejected/",
 							"event": [
 								{
 									"listen": "test",
@@ -7670,7 +7880,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/positions/{{ID_POSITION}}/history/",
+									"raw": "{{host}}/positions/{{ID_POSITION}}/history/rejected/",
 									"host": [
 										"{{host}}"
 									],
@@ -7678,6 +7888,41 @@
 										"positions",
 										"{{ID_POSITION}}",
 										"history",
+										"rejected",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/positions/ {id}/ history/finished/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/positions/{{ID_POSITION}}/history/finished/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"positions",
+										"{{ID_POSITION}}",
+										"history",
+										"finished",
 										""
 									]
 								}
@@ -7806,7 +8051,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"remote_type\": \"offshore\",\n  \"position\": \"{{ID_POSITION}}\"\n}",
+									"raw": "{\n  \"remote_type\": \"nearshore\",\n  \"position\": \"{{ID_POSITION}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8976,7 +9221,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"use_type\": \"original_location\",\n  \"position\": \"{{ID_POSITION}}\",\n  \"country\": \"{{ID_COUNTRY}}\"\n}",
+									"raw": "{\n  \"use_type\": \"prohibited_for_staffing\",\n  \"position\": \"{{ID_POSITION}}\",\n  \"country\": \"{{ID_COUNTRY}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9505,7 +9750,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"start_date\": \"2021-11-10T14:15:45.074Z\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"raw": "{\r\n  \"start_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9540,7 +9785,7 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
+											"        //pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
 											"        pm.expect(jsonData.position_remote_type).to.eql(pm.globals.get(\"ID_POSITION_REMOTE_TYPE\"))\r",
 											"        pm.expect(jsonData.base_request).to.eql(pm.globals.get(\"ID_BR\"));\r",
 											"        });"
@@ -9593,7 +9838,7 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
+											"        //pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
 											"        pm.expect(jsonData.position_remote_type).to.eql(pm.globals.get(\"ID_POSITION_REMOTE_TYPE\"))\r",
 											"        pm.expect(jsonData.base_request).to.eql(pm.globals.get(\"ID_BR\"));\r",
 											"        });"
@@ -9607,7 +9852,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"start_date\": \"2021-11-10T14:15:45.074Z\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"raw": "{\r\n  \"start_date\": \"2021-11-10\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9643,7 +9888,7 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
+											"        //pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
 											"        pm.expect(jsonData.position_remote_type).to.eql(pm.globals.get(\"ID_POSITION_REMOTE_TYPE\"))\r",
 											"        pm.expect(jsonData.base_request).to.eql(pm.globals.get(\"ID_BR\"));\r",
 											"        });"
@@ -9657,7 +9902,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"start_date\": \"2021-11-10T14:15:45.074Z\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"raw": "{\r\n  \"start_date\": \"2021-11-10\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10029,7 +10274,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"request_type\": \"candidate\",\n  \"billable_status\": \"billable\",\n  \"engagement_type\": \"new_business\",\n  \"job_type\": \"full_time\",\n  \"hours_per_day\": 0,\n  \"deadline\": \"2021-10-13\",\n  \"position\": \"{{ID_POSITION}}\"\n}",
+									"raw": "{\n  \"request_type\": \"candidate\",\n  \"billable_status\": \"billable\",\n  \"engagement_type\": \"new_business\",\n  \"job_type\": \"part_time\",\n  \"hours_per_day\": 0,\n  \"deadline\": \"2021-10-13\",\n  \"position\": \"{{ID_POSITION}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10163,7 +10408,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"request_type\": \"candidate\",\r\n  \"billable_status\": \"billable\",\r\n  \"engagement_type\": \"new_business\",\r\n  \"job_type\": \"full_time\",\r\n  \"hours_per_day\": 0,\r\n  \"deadline\": \"2021-10-13\",\r\n  \"position\": \"{{ID_POSITION}}\"\r\n}",
+									"raw": "{\r\n  \"request_type\": \"candidate\",\r\n  \"billable_status\": \"billable\",\r\n  \"engagement_type\": \"new_business\",\r\n  \"job_type\": \"part_time\",\r\n  \"hours_per_day\": 0,\r\n  \"deadline\": \"2021-10-13\",\r\n  \"position\": \"{{ID_POSITION}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -12276,13 +12521,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										""
 									]
@@ -12403,6 +12647,38 @@
 							"path": [
 								"lock",
 								"{{ID_LOCK}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/secrets/",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d2ac3a7e0c6554bb919b6b191f36194040c661f0931086ba1069df6bdbcaeb20",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://passit.kzn.akvelon.com/api/groups/",
+							"protocol": "https",
+							"host": [
+								"passit",
+								"kzn",
+								"akvelon",
+								"com"
+							],
+							"path": [
+								"api",
+								"groups",
 								""
 							]
 						}

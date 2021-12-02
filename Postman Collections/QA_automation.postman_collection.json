@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "645271b1-c212-4799-aa5f-af262df64fba",
+		"_postman_id": "6d74a7bd-b3b1-4a93-9a52-c666e8ab823e",
 		"name": "QA_automation",
 		"description": "# Introduction\nAHS project's API automation collection\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -25,7 +25,9 @@
 									"    var jsonData = pm.response.json();\r",
 									"    //console.log('This is jsonData', jsonData.id)\r",
 									"    pm.environment.set(\"JWT_ACCESS\", jsonData.access);\r",
-									"});"
+									"});\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1221,7 +1223,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"date\": \"2021-10-13T21:01:58.610Z\",\n  \"title\": \"{{base_int_test}}\",\n  \"decision\": \"waiting\",\n  \"summary\": \"string\",\n  \"feedback_status\": \"waiting\",\n  \"interviewee\": \"{{ID_PERSON}}\",\n  \"position\": \"{{ID_POSITION}}\"\n}\n",
+									"raw": "{\n  \"date\": \"2021-10-13T21:01:58.610Z\",\n  \"title\": \"{{base_int_test}}\",\n  \"decision\": \"waiting\",\n  \"summary\": \"string\",\n  \"comment\": \"interview comment\",\n  \"feedback_status\": \"waiting\",\n  \"interviewee\": \"{{ID_PERSON}}\",\n  \"position\": \"{{ID_POSITION}}\"\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2881,7 +2883,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"date\": \"2021-10-18T13:15:55.413Z\",\r\n  \"title\": \"{{title_position_interview}}\",\r\n  \"decision\": \"waiting\",\r\n  \"interviewee\": \"{{ID_PERSON}}\",\r\n  \"interviewers\": [\r\n    \"Test-interviewer-1\",\r\n    \"Test-interviewer-2\"\r\n  ],\r\n  \"position_interview_type\": \"client_interview\",\r\n  \"position\": \"{{ID_POSITION}}\",\r\n  \"summary\": \"test-summary\",\r\n  \"rejection_reason\": \"test-rejection-reason\",\r\n  \"outcome_comment\": \"test-comment\"\r\n}",
+									"raw": "{\r\n  \"date\": \"2021-10-18T13:15:55.413Z\",\r\n  \"title\": \"{{title_position_interview}}\",\r\n  \"decision\": \"waiting\",\r\n  \"feedback_status\": \"yes\",\r\n  \"interviewee\": \"{{ID_PERSON}}\",\r\n  \"interviewers\": [\r\n    \"Test-interviewer-1\",\r\n    \"Test-interviewer-2\"\r\n  ],\r\n  \"position_interview_type\": \"client_interview\",\r\n  \"position\": \"{{ID_POSITION}}\",\r\n  \"summary\": \"test-summary\",\r\n  \"rejection_reason\": \"test-rejection-reason\",\r\n  \"outcome_comment\": \"test-comment\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3043,7 +3045,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"date\": \"2021-10-18T13:15:55.413Z\",\r\n  \"title\": \"{{title_position_interview}}\",\r\n  \"decision\": \"waiting\",\r\n  \"interviewee\": \"{{ID_PERSON}}\",\r\n  \"interviewers\": [\r\n    \"Test-interviewer-1\",\r\n    \"Test-interviewer-2\"\r\n  ],\r\n  \"position_interview_type\": \"client_interview\",\r\n  \"position\": \"{{ID_POSITION}}\",\r\n  \"summary\": \"test-summary\",\r\n  \"rejection_reason\": \"test-rejection-reason\",\r\n  \"outcome_comment\": \"test-comment\"\r\n}",
+									"raw": "{\r\n  \"date\": \"2021-10-18T13:15:55.413Z\",\r\n  \"title\": \"{{title_position_interview}}\",\r\n  \"decision\": \"waiting\",\r\n  \"feedback_status\": \"yes\",\r\n  \"interviewee\": \"{{ID_PERSON}}\",\r\n  \"interviewers\": [\r\n    \"Test-interviewer-1\",\r\n    \"Test-interviewer-2\"\r\n  ],\r\n  \"position_interview_type\": \"client_interview\",\r\n  \"position\": \"{{ID_POSITION}}\",\r\n  \"summary\": \"test-summary\",\r\n  \"rejection_reason\": \"test-rejection-reason\",\r\n  \"outcome_comment\": \"test-comment\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3134,6 +3136,18 @@
 							"path": [
 								"cities",
 								""
+							],
+							"query": [
+								{
+									"key": "country__title_ru",
+									"value": "Россия",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -4353,1694 +4367,6 @@
 			]
 		},
 		{
-			"name": "hr-importer_auto",
-			"item": [
-				{
-					"name": "/hr-importer/",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/hr-importer/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"hr-importer",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "hr-importer",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Successful POST request\", function () {\r",
-									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "generated_json",
-									"type": "file",
-									"src": "NX5sQDJ5J/persons.json"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{host}}/hr-importer/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"hr-importer",
-								""
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Persons_auto",
-			"item": [
-				{
-					"name": "persons_auto",
-					"item": [
-						{
-							"name": "/persons/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// //GET id_person\r",
-											"// pm.test(\"Set variable id\", function () {\r",
-											"//     var jsonData = pm.response.json();\r",
-											"//     //console.log('This is jsonData', jsonData.id)\r",
-											"//     pm.environment.set(\"id_person\", jsonData.results[0].id);\r",
-											"// });"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										""
-									],
-									"query": [
-										{
-											"key": "first_name",
-											"value": "Rick",
-											"disabled": true
-										},
-										{
-											"key": "middle_name",
-											"value": "Smith",
-											"disabled": true
-										},
-										{
-											"key": "last_name",
-											"value": "HR Last_Name",
-											"disabled": true
-										},
-										{
-											"key": "english_level",
-											"value": "advanced",
-											"disabled": true
-										},
-										{
-											"key": "office_location",
-											"value": "USA",
-											"disabled": true
-										},
-										{
-											"key": "assigned_hrs",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "relocation_desire",
-											"value": "1b53cef9-a9aa-42b7-8061-6111f7333ae7",
-											"disabled": true
-										},
-										{
-											"key": "residence_type",
-											"value": "b514bd47-4f7d-4bc0-8934-58898bb3b25b",
-											"disabled": true
-										},
-										{
-											"key": "role",
-											"value": "",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons/",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Successful POST request\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-											"});\r",
-											"\r",
-											"// Set var 'id' \r",
-											"pm.test(\"Set variable id\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    //console.log('This is jsonData', jsonData.id)\r",
-											"    pm.environment.set(\"id_person\", jsonData.id);\r",
-											"    //pm.globals.set(\"ID_PERSON\", jsonData.id);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons/ {id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
-											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
-											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
-											"        });\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
-											"        //pm.expect(jsonData.residences[0]).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons/{{ID_PERSON}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										"{{ID_PERSON}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons/ {id}/",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);"
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
-											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
-											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
-											"        });\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
-											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons/{{id_person}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										"{{id_person}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons/ {id}/",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
-											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
-											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
-											"        });\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
-											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons/{{id_person}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										"{{id_person}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons/ {id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 204\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons/{{id_person}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										"{{id_person}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "persons/hrs/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons/hrs/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										"hrs",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-tech-interviewers/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// //GET id_person\r",
-											"// pm.test(\"Set variable id\", function () {\r",
-											"//     var jsonData = pm.response.json();\r",
-											"//     //console.log('This is jsonData', jsonData.id)\r",
-											"//     pm.environment.set(\"id_person\", jsonData.results[0].id);\r",
-											"// });"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons/tech-interviewers/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										"tech-interviewers",
-										""
-									],
-									"query": [
-										{
-											"key": "first_name",
-											"value": "Rick",
-											"disabled": true
-										},
-										{
-											"key": "middle_name",
-											"value": "Smith",
-											"disabled": true
-										},
-										{
-											"key": "last_name",
-											"value": "HR Last_Name",
-											"disabled": true
-										},
-										{
-											"key": "english_level",
-											"value": "advanced",
-											"disabled": true
-										},
-										{
-											"key": "office_location",
-											"value": "USA",
-											"disabled": true
-										},
-										{
-											"key": "assigned_hrs",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "relocation_desire",
-											"value": "1b53cef9-a9aa-42b7-8061-6111f7333ae7",
-											"disabled": true
-										},
-										{
-											"key": "residence_type",
-											"value": "b514bd47-4f7d-4bc0-8934-58898bb3b25b",
-											"disabled": true
-										},
-										{
-											"key": "role",
-											"value": "",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "persons/me/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code is 404 (Person doesn't have user_model)\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons/me/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										"me",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "persons/me/",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);"
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code is 404, Person doesn't have user_model\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
-											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
-											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
-											"        });\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
-											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons/me/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										"me",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "persons/me/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code is 404, Person doesn't have user_model\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
-											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
-											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
-											"        });\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
-											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
-											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });"
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
-											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
-											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/api/v2.0/persons/me/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"v2.0",
-										"persons",
-										"me",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "persons/me/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 204\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
-											"});\r",
-											"pm.test(\"Status code is 404, Person doesn't have user_model\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons/me/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons",
-										"me",
-										""
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "persons_other_cvs_auto",
-					"item": [
-						{
-							"name": "/persons-cvs/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": []
-								},
-								"url": {
-									"raw": "{{host}}/persons-other-cvs/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-other-cvs",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-cvs/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Successful POST request\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-											"});\r",
-											"\r",
-											"\r",
-											"// Set var 'id' \r",
-											"pm.test(\"Set variable id\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    //console.log('This is jsonData', jsonData.id)\r",
-											"    pm.environment.set(\"id_person_other_cvs\", jsonData.id);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "is_current",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "person",
-											"value": "{{ID_PERSON}}",
-											"type": "text"
-										},
-										{
-											"key": "file",
-											"type": "file",
-											"src": "/C:/Users/Akvelon/Downloads/dismiss logic.txt"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{host}}/persons-other-cvs/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-other-cvs",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-cvs/ {id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-other-cvs/{{id_person_other_cvs}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-other-cvs",
-										"{{id_person_other_cvs}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-cvs/ {id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "is_current",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "person",
-											"value": "{{ID_PERSON}}",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{host}}/persons-other-cvs/{{id_person_other_cvs}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-other-cvs",
-										"{{id_person_other_cvs}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-cvs/ {id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "is_current",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "person",
-											"value": "{{ID_PERSON}}",
-											"type": "text"
-										},
-										{
-											"key": "file",
-											"type": "file",
-											"src": "/C:/Users/Рушат/Desktop/1_vdh5SWbgqYu4QNgtovBt2A.png",
-											"disabled": true
-										}
-									]
-								},
-								"url": {
-									"raw": "{{host}}/persons-other-cvs/{{id_person_other_cvs}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-other-cvs",
-										"{{id_person_other_cvs}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-cvs/ {id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 204\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{host}}/persons-other-cvs/{{id_person_other_cvs}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-other-cvs",
-										"{{id_person_other_cvs}}",
-										""
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "persons-skills_auto",
-					"item": [
-						{
-							"name": "​/persons-skills​/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-skills/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-skills",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "​/persons-skills​/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Successful POST request\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-											"});\r",
-											"\r",
-											"\r",
-											"// Set var 'id' \r",
-											"pm.test(\"Set variable id\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    //console.log('This is jsonData', jsonData.id)\r",
-											"    pm.environment.set(\"id_person_skills\", jsonData.id);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"grade\": \"senior\",\r\n  \"is_primary\": true,\r\n  \"is_confirmed\": true,\r\n  \"person\": \"{{ID_PERSON}}\",\r\n  \"skill\": \"{{ID_SKILLS}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons-skills/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-skills",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "​/persons-skills​/{id}",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        pm.expect(jsonData.skill).to.eql(pm.globals.get(\"ID_SKILLS\"));\r",
-											"        });\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-skills/{{id_person_skills}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-skills",
-										"{{id_person_skills}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "​/persons-skills​/{id}",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        pm.expect(jsonData.skill).to.eql(pm.globals.get(\"ID_SKILLS\"));\r",
-											"        });\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"grade\": \"senior\",\r\n  \"is_primary\": true,\r\n  \"is_confirmed\": true,\r\n  \"person\": \"{{ID_PERSON}}\",\r\n  \"skill\": \"{{ID_SKILLS}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons-skills/{{id_person_skills}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-skills",
-										"{{id_person_skills}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "​/persons-skills​/{id}",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        pm.expect(jsonData.skill).to.eql(pm.globals.get(\"ID_SKILLS\"));\r",
-											"        });\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"grade\": \"senior\",\r\n  \"is_primary\": true,\r\n  \"is_confirmed\": true,\r\n  \"person\": \"{{ID_PERSON}}\",\r\n  \"skill\": \"{{ID_SKILLS}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons-skills/{{id_person_skills}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-skills",
-										"{{id_person_skills}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "​/persons-skills​/{id}",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 204\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-skills/{{id_person_skills}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-skills",
-										"{{id_person_skills}}",
-										""
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "persons-work-histories_auto",
-					"item": [
-						{
-							"name": "/persons-work-histories/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-work-histories/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-work-histories",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-work-histories/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Successful POST request\", function () {\r",
-											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-											"});\r",
-											"\r",
-											"\r",
-											"// Set var 'id' \r",
-											"pm.test(\"Set variable id\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    //console.log('This is jsonData', jsonData.id)\r",
-											"    pm.environment.set(\"id_person_work_hostory\", jsonData.id);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"start_work_date\": \"2021-10-18\",\r\n  \"end_work_date\": \"2021-10-18\",\r\n  \"rejection_reason\": \"Test-reject\",\r\n  \"outcome_comment\": \"Test-comment\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons-work-histories/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-work-histories",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-work-histories/{id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-work-histories/{{id_person_work_hostory}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-work-histories",
-										"{{id_person_work_hostory}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-work-histories/{id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"start_work_date\": \"2021-10-18\",\r\n  \"end_work_date\": \"2021-10-18\",\r\n  \"rejection_reason\": \"Test-reject\",\r\n  \"outcome_comment\": \"Test-comment\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons-work-histories/{{id_person_work_hostory}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-work-histories",
-										"{{id_person_work_hostory}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-work-histories/{id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Equality checking\r",
-											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
-											"        var jsonData = pm.response.json();\r",
-											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
-											"        });"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"start_work_date\": \"2021-10-18\",\r\n  \"end_work_date\": \"2021-10-18\",\r\n  \"rejection_reason\": \"Test-reject\",\r\n  \"outcome_comment\": \"Test-comment\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/persons-work-histories/{{id_person_work_hostory}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-work-histories",
-										"{{id_person_work_hostory}}",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "/persons-work-histories/{id}/",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 204\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-work-histories/{{id_person_work_hostory}}/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-work-histories",
-										"{{id_person_work_hostory}}",
-										""
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "persons_positions_auto",
-					"item": [
-						{
-							"name": "{id}/in-progress/",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-positions/{{ID_PERSON}}/in-progress/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-positions",
-										"{{ID_PERSON}}",
-										"in-progress",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "{id}/staffed/",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-positions/{{ID_PERSON}}/staffed/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-positions",
-										"{{ID_PERSON}}",
-										"staffed",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "{id}/history/",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/persons-positions/{{ID_PERSON}}/staffed/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"persons-positions",
-										"{{ID_PERSON}}",
-										"staffed",
-										""
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "Roles_auto",
 			"item": [
 				{
@@ -6614,7 +4940,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/projects/",
+							"raw": "{{host}}/projects/?page_filter=history",
 							"host": [
 								"{{host}}"
 							],
@@ -6624,13 +4950,12 @@
 							],
 							"query": [
 								{
-									"key": "status",
-									"value": "finished",
-									"disabled": true
+									"key": "page_filter",
+									"value": "history"
 								},
 								{
-									"key": "page_filter",
-									"value": "positions_history",
+									"key": "status",
+									"value": "finished",
 									"disabled": true
 								}
 							]
@@ -6773,7 +5098,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"{{title_project}}\",\n  \"client\": \"{{ID_CLIENT}}\",\n  \"status\": \"waiting\",\n  \"rejection_reason\": \"not_found_candidates\",\n  \"finish_reason\": \"test-finish-reason\",\n  \"outcome_comment\": \"test-comment\"\n}",
+							"raw": "{\n  \"title\": \"{{title_project}}\",\n  \"client\": \"{{ID_CLIENT}}\",\n  \"status\": \"finished\",\n  \"rejection_reason\": \"not_found_candidates\",\n  \"finish_reason\": \"test-finish-reason\",\n  \"outcome_comment\": \"test-comment\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6832,7 +5157,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"{{title_project}}\",\n  \"client\": \"{{ID_CLIENT}}\",\n  \"status\": \"waiting\",\n  \"rejection_reason\": \"not_found_candidates\",\n  \"finish_reason\": \"test-finish-reason\",\n  \"outcome_comment\": \"test-comment\"\n}",
+							"raw": "{\n  \"title\": \"{{title_project}}\",\n  \"client\": \"{{ID_CLIENT}}\",\n  \"status\": \"rejected\",\n  \"rejection_reason\": \"not_found_candidates\",\n  \"finish_reason\": \"test-finish-reason\",\n  \"outcome_comment\": \"test-comment\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -7139,6 +5464,1845 @@
 			]
 		},
 		{
+			"name": "Persons_auto",
+			"item": [
+				{
+					"name": "persons_auto",
+					"item": [
+						{
+							"name": "/persons/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// //GET id_person\r",
+											"// pm.test(\"Set variable id\", function () {\r",
+											"//     var jsonData = pm.response.json();\r",
+											"//     //console.log('This is jsonData', jsonData.id)\r",
+											"//     pm.environment.set(\"id_person\", jsonData.results[0].id);\r",
+											"// });"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										""
+									],
+									"query": [
+										{
+											"key": "first_name",
+											"value": "Rick",
+											"disabled": true
+										},
+										{
+											"key": "middle_name",
+											"value": "Smith",
+											"disabled": true
+										},
+										{
+											"key": "last_name",
+											"value": "HR Last_Name",
+											"disabled": true
+										},
+										{
+											"key": "english_level",
+											"value": "advanced",
+											"disabled": true
+										},
+										{
+											"key": "office_location",
+											"value": "USA",
+											"disabled": true
+										},
+										{
+											"key": "assigned_hrs",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "relocation_desire",
+											"value": "1b53cef9-a9aa-42b7-8061-6111f7333ae7",
+											"disabled": true
+										},
+										{
+											"key": "residence_type",
+											"value": "b514bd47-4f7d-4bc0-8934-58898bb3b25b",
+											"disabled": true
+										},
+										{
+											"key": "role",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons/",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+											"});\r",
+											"\r",
+											"// Set var 'id' \r",
+											"pm.test(\"Set variable id\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    //console.log('This is jsonData', jsonData.id)\r",
+											"    pm.environment.set(\"id_person\", jsonData.id);\r",
+											"    //pm.globals.set(\"ID_PERSON\", jsonData.id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"primary_skills\": [\r\n    {\r\n      \"skill\": \"{{ID_SKILLS}}\",\r\n      \"grade\": \"senior\",\r\n      \"is_confirmed\": true\r\n    }\r\n  ],\r\n  \"other_skills\": [\r\n    \"{{ID_SKILLS}}\"\r\n  ],\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"contacts\": [\r\n    {\r\n      \"contact_type\": \"phone\",\r\n      \"value\": \"string\"\r\n    }\r\n  ],\r\n  \"akvelon_cv\": \"http://192.168.52.137/api/v2.0/\",\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/persons/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
+											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
+											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
+											"        });\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        //pm.expect(jsonData.residences[0]).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
+											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/{{id_person}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{id_person}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons/ {id}/",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
+											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
+											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
+											"        });\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        //pm.expect(jsonData.residences[0]).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
+											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"primary_skills\": [\r\n    {\r\n      \"skill\": \"{{ID_SKILLS}}\",\r\n      \"grade\": \"senior\",\r\n      \"is_confirmed\": true\r\n    }\r\n  ],\r\n  \"other_skills\": [\r\n    \"{{ID_SKILLS}}\"\r\n  ],\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"contacts\": [\r\n    {\r\n      \"contact_type\": \"phone\",\r\n      \"value\": \"string\"\r\n    }\r\n  ],\r\n  \"akvelon_cv\": \"http://192.168.52.137/api/v2.0/\",\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/persons/{{id_person}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{id_person}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons/ {id}/",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
+											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
+											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
+											"        });\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        //pm.expect(jsonData.residences[0]).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
+											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": \"{{ID_CITY}}\",\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"primary_skills\": [\r\n    {\r\n      \"skill\": \"{{ID_SKILLS}}\",\r\n      \"grade\": \"senior\",\r\n      \"is_confirmed\": true\r\n    }\r\n  ],\r\n  \"other_skills\": [\r\n    \"{{ID_SKILLS}}\"\r\n  ],\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"contacts\": [\r\n    {\r\n      \"contact_type\": \"phone\",\r\n      \"value\": \"string\"\r\n    }\r\n  ],\r\n  \"akvelon_cv\": \"http://192.168.52.137/api/v2.0/\",\r\n  \"assigned_hr\": \"{{ID_PERSON}}\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/persons/{{id_person}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{id_person}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/{{id_person}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{id_person}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "persons/hrs/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/hrs/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"hrs",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-tech-interviewers/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// //GET id_person\r",
+											"// pm.test(\"Set variable id\", function () {\r",
+											"//     var jsonData = pm.response.json();\r",
+											"//     //console.log('This is jsonData', jsonData.id)\r",
+											"//     pm.environment.set(\"id_person\", jsonData.results[0].id);\r",
+											"// });"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/tech-interviewers/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"tech-interviewers",
+										""
+									],
+									"query": [
+										{
+											"key": "first_name",
+											"value": "Rick",
+											"disabled": true
+										},
+										{
+											"key": "middle_name",
+											"value": "Smith",
+											"disabled": true
+										},
+										{
+											"key": "last_name",
+											"value": "HR Last_Name",
+											"disabled": true
+										},
+										{
+											"key": "english_level",
+											"value": "advanced",
+											"disabled": true
+										},
+										{
+											"key": "office_location",
+											"value": "USA",
+											"disabled": true
+										},
+										{
+											"key": "assigned_hrs",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "relocation_desire",
+											"value": "1b53cef9-a9aa-42b7-8061-6111f7333ae7",
+											"disabled": true
+										},
+										{
+											"key": "residence_type",
+											"value": "b514bd47-4f7d-4bc0-8934-58898bb3b25b",
+											"disabled": true
+										},
+										{
+											"key": "role",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "persons/me/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 404 (Person doesn't have user_model)\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/me/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"me",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "persons/me/",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 404, Person doesn't have user_model\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
+											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
+											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
+											"        });\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
+											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/persons/me/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"me",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "persons/me/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 404, Person doesn't have user_model\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.first_name).to.eql(pm.environment.get(\"person_first_name\"));\r",
+											"        pm.expect(jsonData.middle_name).to.eql(pm.environment.get(\"person_middle_name\"));\r",
+											"        pm.expect(jsonData.last_name).to.eql(pm.environment.get(\"person_last_name\"));\r",
+											"        });\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.city.id).to.eql(pm.globals.get(\"ID_CITY\"));\r",
+											"        //pm.expect(jsonData.residences[0].id).to.eql(pm.globals.get(\"ID_RESIDENCE\"));\r",
+											"        pm.expect(jsonData.assigned_hr.id).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_first_name\", \"name\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_middle_name\", \"middle\"+rnd);\r",
+											"var rnd = Math.floor((Math.random() * 10000) + 1);\r",
+											"postman.setEnvironmentVariable(\"person_last_name\", \"last\"+rnd);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"person_type\": \"base_external\",\r\n  \"roles\": [\r\n    \"{{ID_ROLE}}\"\r\n  ],\r\n  \"first_name\": \"{{person_first_name}}\",\r\n  \"middle_name\": \"{{person_middle_name}}\",\r\n  \"last_name\": \"{{person_last_name}}\",\r\n  \"office\": \"kazan\",\r\n  \"city\": {\r\n    \"id\": \"{{ID_CITY}}\"\r\n  },\r\n  \"comment\": \"Test-comment\",\r\n  \"salary\": \"Test-salary\",\r\n  \"english_level\": \"beginner\",\r\n  \"english_comment\": \"advanced\",\r\n  \"residences\": [\r\n    \"{{ID_RESIDENCE}}\"\r\n  ],\r\n  \"relocation_desires\": [\r\n    \"{{ID_COUNTRY}}\"\r\n  ],\r\n  \"relocation_comment\": \"Test-comment\",\r\n  \"email\": [\r\n    \"test@example.com\"\r\n  ],\r\n  \"assigned_hr\": {\r\n    \"id\": \"{{ID_PERSON}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/persons/me/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"me",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "persons/me/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"pm.test(\"Status code is 404, Person doesn't have user_model\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/me/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"me",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{id}/in-progress/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/{{ID_PERSON}}/in-progress/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{ID_PERSON}}",
+										"in-progress",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{id}/staffed/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/{{ID_PERSON}}/staffed/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{ID_PERSON}}",
+										"staffed",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{id}/history/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons/{{ID_PERSON}}/staffed/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons",
+										"{{ID_PERSON}}",
+										"staffed",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "persons_other_cvs_auto",
+					"item": [
+						{
+							"name": "/persons-other-cvs/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{host}}/persons-other-cvs/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons-other-cvs",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-other-cvs/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"// Set var 'id' \r",
+											"pm.test(\"Set variable id\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    //console.log('This is jsonData', jsonData.id)\r",
+											"    pm.environment.set(\"id_person_other_cvs\", jsonData.id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "is_current",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "person",
+											"value": "{{ID_PERSON}}",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Рушат/Desktop/QA_automation.postman_collection.json"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/persons-other-cvs/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons-other-cvs",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-other-cvs/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/persons-other-cvs/{{id_person_other_cvs}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons-other-cvs",
+										"{{id_person_other_cvs}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-other-cvs/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "is_current",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "person",
+											"value": "{{ID_PERSON}}",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Рушат/Desktop/QA_automation.postman_collection.json"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/persons-other-cvs/{{id_person_other_cvs}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons-other-cvs",
+										"{{id_person_other_cvs}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-other-cvs/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "is_current",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "person",
+											"value": "{{ID_PERSON}}",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/persons-other-cvs/{{id_person_other_cvs}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons-other-cvs",
+										"{{id_person_other_cvs}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-other-cvs/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{host}}/persons-other-cvs/{{id_person_other_cvs}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"persons-other-cvs",
+										"{{id_person_other_cvs}}",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "persons-skills_auto",
+					"item": [
+						{
+							"name": "​/persons-skills​/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/person-skills/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-skills",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "​/persons-skills​/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"// Set var 'id' \r",
+											"pm.test(\"Set variable id\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    //console.log('This is jsonData', jsonData.id)\r",
+											"    pm.environment.set(\"id_person_skills\", jsonData.id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"grade\": \"senior\",\r\n  \"is_primary\": true,\r\n  \"is_confirmed\": true,\r\n  \"person\": \"{{ID_PERSON}}\",\r\n  \"skill\": \"{{ID_SKILLS}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-skills/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-skills",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "​/persons-skills​/{id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        pm.expect(jsonData.skill).to.eql(pm.globals.get(\"ID_SKILLS\"));\r",
+											"        });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/person-skills/{{id_person_skills}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-skills",
+										"{{id_person_skills}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "​/persons-skills​/{id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        pm.expect(jsonData.skill).to.eql(pm.globals.get(\"ID_SKILLS\"));\r",
+											"        });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"grade\": \"senior\",\r\n  \"is_primary\": true,\r\n  \"is_confirmed\": true,\r\n  \"person\": \"{{ID_PERSON}}\",\r\n  \"skill\": \"{{ID_SKILLS}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-skills/{{id_person_skills}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-skills",
+										"{{id_person_skills}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "​/persons-skills​/{id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        pm.expect(jsonData.skill).to.eql(pm.globals.get(\"ID_SKILLS\"));\r",
+											"        });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"grade\": \"senior\",\r\n  \"is_primary\": true,\r\n  \"is_confirmed\": true,\r\n  \"person\": \"{{ID_PERSON}}\",\r\n  \"skill\": \"{{ID_SKILLS}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-skills/{{id_person_skills}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-skills",
+										"{{id_person_skills}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "​/persons-skills​/{id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/person-skills/{{id_person_skills}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-skills",
+										"{{id_person_skills}}",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "persons-work-histories_auto",
+					"item": [
+						{
+							"name": "/persons-work-histories/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/person-work-histories/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-work-histories",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-work-histories/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"// Set var 'id' \r",
+											"pm.test(\"Set variable id\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    //console.log('This is jsonData', jsonData.id)\r",
+											"    pm.environment.set(\"id_person_work_hostory\", jsonData.id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"start_work_date\": \"2021-10-18\",\r\n  \"end_work_date\": \"2021-10-18\",\r\n  \"rejection_reason\": \"Test-reject\",\r\n  \"outcome_comment\": \"Test-comment\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-work-histories/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-work-histories",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-work-histories/{id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/person-work-histories/{{id_person_work_hostory}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-work-histories",
+										"{{id_person_work_hostory}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-work-histories/{id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"start_work_date\": \"2021-10-18\",\r\n  \"end_work_date\": \"2021-10-18\",\r\n  \"rejection_reason\": \"Test-reject\",\r\n  \"outcome_comment\": \"Test-comment\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-work-histories/{{id_person_work_hostory}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-work-histories",
+										"{{id_person_work_hostory}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-work-histories/{id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Equality checking\r",
+											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
+											"        var jsonData = pm.response.json();\r",
+											"        //console.log('This is jsonData', jsonData.title)\r",
+											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"));\r",
+											"        });"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"start_work_date\": \"2021-10-18\",\r\n  \"end_work_date\": \"2021-10-18\",\r\n  \"rejection_reason\": \"Test-reject\",\r\n  \"outcome_comment\": \"Test-comment\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-work-histories/{{id_person_work_hostory}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-work-histories",
+										"{{id_person_work_hostory}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/persons-work-histories/{id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/person-work-histories/{{id_person_work_hostory}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-work-histories",
+										"{{id_person_work_hostory}}",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "person-contact",
+					"item": [
+						{
+							"name": "/person-contacts/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/person-contacts/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-contacts",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/person-contacts/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Set var 'id' \r",
+											"pm.test(\"Set variable id\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    //console.log('This is jsonData', jsonData.id)\r",
+											"    pm.environment.set(\"id_person_contacts\", jsonData.id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"contact_type\": \"phone\",\n  \"value\": \"+79999999999\",\n  \"person\": \"{{ID_PERSON}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-contacts/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-contacts",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/person-contacts/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-contacts/{{id_person_contacts}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-contacts",
+										"{{id_person_contacts}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/person-contacts/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"contact_type\": \"phone\",\r\n  \"value\": \"+79999999999\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-contacts/{{id_person_contacts}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-contacts",
+										"{{id_person_contacts}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/person-contacts/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"contact_type\": \"phone\",\r\n  \"value\": \"+79999999999\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-contacts/{{id_person_contacts}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-contacts",
+										"{{id_person_contacts}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/person-contacts/ {id}/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"contact_type\": \"phone\",\r\n  \"value\": \"+79999999999\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/person-contacts/{{id_person_contacts}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"person-contacts",
+										"{{id_person_contacts}}",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Positions",
 			"item": [
 				{
@@ -7201,7 +7365,7 @@
 										},
 										{
 											"key": "ordering",
-											"value": "created_at",
+											"value": "-deadline_closest",
 											"disabled": true
 										},
 										{
@@ -7270,7 +7434,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"project\": \"{{ID_PROJECT}}\",\n  \"title\": \"{{title_position}}\",\n  \"status\": \"open\",\n  \"position_type\": \"project\",\n  \"priority\": \"low\",\n  \"engagement_type\": \"new_business\",\n  \"comment\": \"test-comment\",\n  \"time_zone\": \"moscow\",\n  \"role\": \"{{ID_ROLE}}\",\n  \"job_type\": \"full_time\",\n  \"hours_per_day\": 8,\n  \"job_description\": \"test-description\",\n  \"rejection_reason\": \"test-rejection-reason\",\n  \"outcome_comment\": \"test-comment\",\n  \"position_hrs\": [\n    \"{{ID_PERSON}}\"\n  ]\n}",
+									"raw": "{\n  \"project\": \"{{ID_PROJECT}}\",\n  \"title\": \"{{title_position}}\",\n  \"status\": \"open\",\n  \"position_type\": \"project\",\n  \"priority\": \"low\",\n  \"is_confirmed\": true,\n  \"comment\": \"test-comment\",\n  \"role\": \"{{ID_ROLE}}\",\n  \"job_description\": \"test-description\",\n  \"rejection_reason\": \"test-rejection-reason\",\n  \"english_level\": \"advanced\",\n  \"outcome_comment\": \"test-comment\",\n  \"position_hrs\": [\n    \"{{ID_PERSON}}\"\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7362,7 +7526,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"project\": \"{{ID_PROJECT}}\",\n  \"title\": \"{{title_position}}\",\n  \"status\": \"open\",\n  \"position_type\": \"project\",\n  \"priority\": \"low\",\n  \"engagement_type\": \"new_business\",\n  \"comment\": \"test-comment\",\n  \"time_zone\": \"moscow\",\n  \"role\": \"{{ID_ROLE}}\",\n  \"job_type\": \"full_time\",\n  \"hours_per_day\": 8,\n  \"job_description\": \"test-description\",\n  \"rejection_reason\": \"test-rejection-reason\",\n  \"outcome_comment\": \"test-comment\",\n  \"position_hrs\": [\n    \"{{ID_PERSON}}\"\n  ]\n}",
+									"raw": "{\n  \"project\": \"{{ID_PROJECT}}\",\n  \"title\": \"{{title_position}}\",\n  \"status\": \"open\",\n  \"position_type\": \"project\",\n  \"priority\": \"low\",\n  \"is_confirmed\": false,\n  \"comment\": \"test-comment\",\n  \"role\": \"{{ID_ROLE}}\",\n  \"job_description\": \"test-description\",\n  \"rejection_reason\": \"test-rejection-reason\",\n  \"outcome_comment\": \"test-comment\",\n  \"position_hrs\": [\n    \"{{ID_PERSON}}\"\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7413,7 +7577,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"project\": \"{{ID_PROJECT}}\",\n  \"title\": \"{{title_position}}\",\n  \"status\": \"open\",\n  \"position_type\": \"project\",\n  \"priority\": \"low\",\n  \"engagement_type\": \"new_business\",\n  \"comment\": \"test-comment\",\n  \"time_zone\": \"moscow\",\n  \"role\": \"{{ID_ROLE}}\",\n  \"job_type\": \"full_time\",\n  \"hours_per_day\": 8,\n  \"job_description\": \"test-description\",\n  \"rejection_reason\": \"test-rejection-reason\",\n  \"outcome_comment\": \"test-comment\",\n  \"position_hrs\": [\n    \"{{ID_PERSON}}\"\n  ]\n}",
+									"raw": "{\n  \"project\": \"{{ID_PROJECT}}\",\n  \"title\": \"{{title_position}}\",\n  \"status\": \"open\",\n  \"position_type\": \"project\",\n  \"priority\": \"low\",\n  \"is_confirmed\": false,\n  \"comment\": \"test-comment\",\n  \"role\": \"{{ID_ROLE}}\",\n  \"job_description\": \"test-description\",\n  \"rejection_reason\": \"test-rejection-reason\",\n  \"outcome_comment\": \"test-comment\",\n  \"position_hrs\": [\n    \"{{ID_PERSON}}\"\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7467,7 +7631,49 @@
 							"response": []
 						},
 						{
-							"name": "/positions/ {id}/ history",
+							"name": "/positions/ {id}/ apply",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"person\": \"{{ID_PERSON}}\",\r\n  \"billable_status\": \"billable\",\r\n  \"employment_type\": \"basic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/positions/{{ID_POSITION}}/apply/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"positions",
+										"{{ID_POSITION}}",
+										"apply",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/positions/ {id}/ recommended-external",
 							"event": [
 								{
 									"listen": "test",
@@ -7485,14 +7691,104 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/positions/{{ID_POSITION}}/history/",
+									"raw": "{{host}}/positions/{{ID_POSITION}}/recommended-external/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"positions",
 										"{{ID_POSITION}}",
-										"history",
+										"recommended-external",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "na",
+											"disabled": true
+										},
+										{
+											"key": "roles",
+											"value": "732dd198-b3a5-4005-a795-5c86331081ab",
+											"disabled": true
+										},
+										{
+											"key": "grade",
+											"value": "senior",
+											"disabled": true
+										},
+										{
+											"key": "residences",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "english_level",
+											"value": "beginner",
+											"disabled": true
+										},
+										{
+											"key": "office",
+											"value": "kazan",
+											"disabled": true
+										},
+										{
+											"key": "city",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "person_type",
+											"value": "base_external",
+											"disabled": true
+										},
+										{
+											"key": "assigned_hr",
+											"value": "3161778c-68ea-4edd-b6ba-e4c2d4f3ca93",
+											"disabled": true
+										},
+										{
+											"key": "person_page",
+											"value": "external",
+											"disabled": true
+										},
+										{
+											"key": "position",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/positions/ {id}/ recommended-external",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/positions/{{ID_POSITION}}/recommended-internal/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"positions",
+										"{{ID_POSITION}}",
+										"recommended-internal",
 										""
 									]
 								}
@@ -7559,6 +7855,74 @@
 										"positions",
 										"{{ID_POSITION}}",
 										"staffed",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/positions/ {id}/ history/rejected/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/positions/{{ID_POSITION}}/history/rejected/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"positions",
+										"{{ID_POSITION}}",
+										"history",
+										"rejected",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/positions/ {id}/ history/finished/",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/positions/{{ID_POSITION}}/history/finished/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"positions",
+										"{{ID_POSITION}}",
+										"history",
+										"finished",
 										""
 									]
 								}
@@ -7687,7 +8051,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"remote_type\": \"offshore\",\n  \"position\": \"{{ID_POSITION}}\"\n}",
+									"raw": "{\n  \"remote_type\": \"nearshore\",\n  \"position\": \"{{ID_POSITION}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8577,13 +8941,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/position-remote-types/{{id_position_remote_types}}/",
+									"raw": "{{host}}/position-assigned-offices/{{id_position_assigned_offices}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"position-remote-types",
-										"{{id_position_remote_types}}",
+										"position-assigned-offices",
+										"{{id_position_assigned_offices}}",
 										""
 									],
 									"query": [
@@ -8670,13 +9034,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/position-remote-types/{{id_position_remote_types}}/",
+									"raw": "{{host}}/position-assigned-offices/{{id_position_assigned_offices}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"position-remote-types",
-										"{{id_position_remote_types}}",
+										"position-assigned-offices",
+										"{{id_position_assigned_offices}}",
 										""
 									],
 									"query": [
@@ -8857,7 +9221,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"use_type\": \"original_location\",\n  \"position\": \"{{ID_POSITION}}\",\n  \"country\": \"{{ID_COUNTRY}}\"\n}",
+									"raw": "{\n  \"use_type\": \"prohibited_for_staffing\",\n  \"position\": \"{{ID_POSITION}}\",\n  \"country\": \"{{ID_COUNTRY}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9386,7 +9750,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"start_date\": \"2021-11-10T14:15:45.074Z\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"raw": "{\r\n  \"start_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9421,7 +9785,7 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
+											"        //pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
 											"        pm.expect(jsonData.position_remote_type).to.eql(pm.globals.get(\"ID_POSITION_REMOTE_TYPE\"))\r",
 											"        pm.expect(jsonData.base_request).to.eql(pm.globals.get(\"ID_BR\"));\r",
 											"        });"
@@ -9474,7 +9838,7 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
+											"        //pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
 											"        pm.expect(jsonData.position_remote_type).to.eql(pm.globals.get(\"ID_POSITION_REMOTE_TYPE\"))\r",
 											"        pm.expect(jsonData.base_request).to.eql(pm.globals.get(\"ID_BR\"));\r",
 											"        });"
@@ -9488,7 +9852,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"start_date\": \"2021-11-10T14:15:45.074Z\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"raw": "{\r\n  \"start_date\": \"2021-11-10\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9524,7 +9888,7 @@
 											"pm.test(\"Verify that title_client and short_title_client is correct\", function () {\r",
 											"        var jsonData = pm.response.json();\r",
 											"        //console.log('This is jsonData', jsonData.title)\r",
-											"        pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
+											"        //pm.expect(jsonData.person).to.eql(pm.globals.get(\"ID_PERSON\"))\r",
 											"        pm.expect(jsonData.position_remote_type).to.eql(pm.globals.get(\"ID_POSITION_REMOTE_TYPE\"))\r",
 											"        pm.expect(jsonData.base_request).to.eql(pm.globals.get(\"ID_BR\"));\r",
 											"        });"
@@ -9538,7 +9902,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"start_date\": \"2021-11-10T14:15:45.074Z\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
+									"raw": "{\r\n  \"start_date\": \"2021-11-10\",\r\n  \"finish_date\": \"2021-11-10\",\r\n  \"outcome_comment\": \"test-outcome-comment\",\r\n  \"position_remote_type\": \"{{ID_POSITION_REMOTE_TYPE}}\",\r\n  \"base_request\": \"{{ID_BR}}\",\r\n  \"person\": \"{{ID_PERSON}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9910,7 +10274,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"request_type\": \"candidate\",\n  \"billable_status\": \"billable\",\n  \"engagement_type\": \"new_business\",\n  \"job_type\": \"full_time\",\n  \"hours_per_day\": 0,\n  \"deadline\": \"2021-10-13\",\n  \"position\": \"{{ID_POSITION}}\"\n}",
+									"raw": "{\n  \"request_type\": \"candidate\",\n  \"billable_status\": \"billable\",\n  \"engagement_type\": \"new_business\",\n  \"job_type\": \"part_time\",\n  \"hours_per_day\": 0,\n  \"deadline\": \"2021-10-13\",\n  \"position\": \"{{ID_POSITION}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10044,7 +10408,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"request_type\": \"candidate\",\r\n  \"billable_status\": \"billable\",\r\n  \"engagement_type\": \"new_business\",\r\n  \"job_type\": \"full_time\",\r\n  \"hours_per_day\": 0,\r\n  \"deadline\": \"2021-10-13\",\r\n  \"position\": \"{{ID_POSITION}}\"\r\n}",
+									"raw": "{\r\n  \"request_type\": \"candidate\",\r\n  \"billable_status\": \"billable\",\r\n  \"engagement_type\": \"new_business\",\r\n  \"job_type\": \"part_time\",\r\n  \"hours_per_day\": 0,\r\n  \"deadline\": \"2021-10-13\",\r\n  \"position\": \"{{ID_POSITION}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10375,7 +10739,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"transitionId\": \"PASS_SIMPLE_STEP\"\r\n}",
+									"raw": "{\r\n    \"transitionId\": \"PASS_SIMPLE_STEP\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10516,13 +10880,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10561,13 +10924,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10626,13 +10988,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10691,13 +11052,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10729,13 +11089,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-hr-interview/sub-interviews/{{id_hr_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10834,13 +11193,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10880,13 +11238,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -10954,13 +11311,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11028,13 +11384,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11066,13 +11421,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-position-interview/sub-interviews/{{id_pos_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11104,13 +11458,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11169,13 +11522,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11215,13 +11567,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11284,13 +11635,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11353,13 +11703,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11400,13 +11749,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-tech-interview/sub-interviews/{{id_tech_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11438,13 +11786,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11501,13 +11848,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11546,13 +11892,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11611,13 +11956,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11676,13 +12020,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11723,13 +12066,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/candidate-progress/steps/step-test-attestation-interview/sub-interviews/{{id_test_att_int_chart}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										"candidate-progress",
 										"steps",
@@ -11761,13 +12103,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/candidates//{{id_candidates}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"candidates",
-										"",
 										"{{id_candidates}}",
 										""
 									]
@@ -12162,13 +12503,12 @@
 							"response": []
 						},
 						{
-							"name": "OUT /position-seats-occupations/ {id}/",
+							"name": "OUT /candidates/ {id}/",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"exec": [
-											"\r",
 											"pm.test(\"Status code is 204\", function () {\r",
 											"    pm.response.to.have.status(204);\r",
 											"});"
@@ -12181,13 +12521,13 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/position-seat-occupations/{{id_pso}}/",
+									"raw": "{{host}}/candidates/{{id_candidates}}/",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"position-seat-occupations",
-										"{{id_pso}}",
+										"candidates",
+										"{{id_candidates}}",
 										""
 									]
 								}
@@ -12307,6 +12647,38 @@
 							"path": [
 								"lock",
 								"{{ID_LOCK}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/secrets/",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d2ac3a7e0c6554bb919b6b191f36194040c661f0931086ba1069df6bdbcaeb20",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://passit.kzn.akvelon.com/api/groups/",
+							"protocol": "https",
+							"host": [
+								"passit",
+								"kzn",
+								"akvelon",
+								"com"
+							],
+							"path": [
+								"api",
+								"groups",
 								""
 							]
 						}
