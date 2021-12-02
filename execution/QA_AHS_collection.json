@@ -6339,7 +6339,7 @@
 										{
 											"key": "file",
 											"type": "file",
-											"src": "/C:/Users/Рушат/Desktop/QA_automation.postman_collection.json"
+											"src": "../media/cv.txt"
 										}
 									]
 								},
@@ -6438,7 +6438,7 @@
 										{
 											"key": "file",
 											"type": "file",
-											"src": "/C:/Users/Рушат/Desktop/QA_automation.postman_collection.json"
+											"src": "../media/cv.txt"
 										}
 									]
 								},
